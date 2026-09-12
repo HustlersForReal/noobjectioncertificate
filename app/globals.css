@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #cfa93c;
+  --color-primary-dark: #a8822a;
+  --color-page-bg: #ffffff;
+  --color-panel-bg: #ffffff;
+  --color-off-white: #ffffff;
+  --color-muted: #525252;
+  --color-footer-bg: #f4f4f4;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -23,4 +33,15 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mobile: detail-row image always above text */
+@media (max-width: 767px) {
+  .grid > [class*="aspect-"] {
+    order: -1;
+  }
 }
