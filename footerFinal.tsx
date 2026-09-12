@@ -316,7 +316,32 @@ export function FooterFinal({
                 ))}
               </svg>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-sm:[&>*:last-child]:col-span-2 max-sm:[&>*:last-child]:max-w-64 max-sm:[&>*:last-child]:justify-self-center">
+            <div className="relative">
+              {/* Mobile connectors — like image: 2 lines SaleDeed → ValuationWala */}
+              <svg
+                className="lg:hidden pointer-events-none absolute -top-8 left-0 z-0 h-[calc(100%+2rem)] w-full"
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M 24 0 L 24 100"
+                  fill="none"
+                  stroke="#cfa93c"
+                  strokeWidth="4"
+                  vectorEffect="non-scaling-stroke"
+                  strokeLinecap="butt"
+                />
+                <path
+                  d="M 76 0 L 76 100"
+                  fill="none"
+                  stroke="#cfa93c"
+                  strokeWidth="4"
+                  vectorEffect="non-scaling-stroke"
+                  strokeLinecap="butt"
+                />
+              </svg>
+              <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-sm:[&>*:last-child]:col-span-2 max-sm:[&>*:last-child]:max-w-64 max-sm:[&>*:last-child]:justify-self-center max-sm:[&>*:last-child]:w-full">
               {brands.map((brand) => (
                 <button
                   key={brand.name}
@@ -329,6 +354,7 @@ export function FooterFinal({
                   <p className="font-sans text-sm text-[#3f3f3f] mt-2">{brand.desc}</p>
                 </button>
               ))}
+            </div>
             </div>
           </div>
         </section>

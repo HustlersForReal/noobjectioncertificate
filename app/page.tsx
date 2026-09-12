@@ -1,5 +1,6 @@
 import Image from "next/image";
 import AuditForm from "./components/AuditForm";
+import Navbar from "./components/Navbar";
 import FooterFinal from "../footerFinal";
 
 const gold = "#d6b33c";
@@ -60,6 +61,7 @@ const services = [
       "Gift/Relinquishment NOC",
       "Conversion (Leasehold to Freehold) NOC",
       "Re-entry Withdrawal NOC",
+      "Parent Deed (Title Chain) NOC / Certified Copy Retrieval",
     ],
   },
   {
@@ -114,7 +116,7 @@ const services = [
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen font-sans text-black">
+    <div id="top" className="relative min-h-screen font-sans text-black">
       {/* ── Full page background image, no overlay ─────────────── */}
       <div className="fixed inset-0 -z-10">
         <Image
@@ -130,41 +132,7 @@ export default function Home() {
       {/* ── Hero ───────────────────────────────────────────────── */}
       <section className="relative">
           {/* ── Top bar ── */}
-          <header className="border-b border-black/50">
-            <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 sm:py-7">
-              <a href="#" className="flex items-center gap-2 sm:gap-3">
-                <Image
-                  src="/logo.png"
-                  alt="NOC logo"
-                  width={88}
-                  height={88}
-                  className="h-12 w-12 rounded-full object-contain sm:h-16 sm:w-16 md:h-20 md:w-20"
-                />
-                <span className="whitespace-nowrap text-[13px] font-extrabold tracking-tight text-black sm:text-lg md:text-xl">
-                  NoObjectionCertificate
-                  {/* <span className="text-[#cfa93c]">.com</span> */}
-                </span>
-              </a>
-              <a
-                href="tel:+918800505050"
-                className="flex items-center gap-2 rounded-md border border-[#c9a227] bg-black px-3 py-2 text-xs font-medium tracking-wide text-[#e0b93c] sm:px-5 sm:py-2.5 sm:text-sm"
-              >
-                <svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-                </svg>
-                <span className="hidden sm:inline">+91 88005 05050</span>
-              </a>
-            </div>
-          </header>
+          <Navbar />
 
           {/* ── Hero copy ── */}
           <div className="mx-auto max-w-4xl px-6 pb-24 pt-24 text-center md:pb-28 md:pt-36">
@@ -514,6 +482,64 @@ export default function Home() {
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-contain object-center"
               />
+            </div>
+          </div>
+
+          {/* Row 7 — image left, text right */}
+          <div className="mt-14 grid items-center gap-8 md:grid-cols-2 md:gap-12">
+            <div className="relative aspect-square w-full overflow-hidden bg-black">
+              <Image
+                src="/parentdeed.png"
+                alt="Parent Deed Title Chain NOC Certified Copy Retrieval"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-contain object-center"
+              />
+            </div>
+            <div>
+              <h3 className="text-xl font-extrabold text-black md:text-2xl">
+                Parent Deed (Title Chain) NOC / Certified Copy Retrieval
+              </h3>
+              <p className="mt-4 text-[15px] font-bold text-[#cfa93c]">
+                What it is:
+              </p>
+              <p className="mt-2 text-[13px] leading-relaxed text-black md:text-sm">
+                The original &quot;Lease Deed&quot; or &quot;Perpetual
+                Lease&quot; executed between the Government of India (Lessor)
+                and the first allottee. It is the root document that defines
+                the land&apos;s usage, area, and restrictions.
+              </p>
+              <p className="mt-4 text-[15px] font-bold text-[#cfa93c]">
+                Who needs it:
+              </p>
+              <p className="mt-2 text-[13px] leading-relaxed text-black md:text-sm">
+                Sellers of properties in L&DO colonies (like Lajpat Nagar or
+                Defence Colony) where the original 1950s/60s &quot;Parent
+                Deed&quot; is lost or brittle; or buyers doing due diligence
+                to ensure the &quot;Chain of Title&quot; is unbroken.
+              </p>
+              <p className="mt-4 text-[15px] font-bold text-[#cfa93c]">
+                Procedure:
+              </p>
+              <p className="mt-2 text-[13px] leading-relaxed text-black md:text-sm">
+                Search of L&DO Physical Archives → Verification of Allotment
+                Records → Application for Certified Copy → Payment of
+                Search/Copy Fees → Attestation by the Land & Development
+                Officer.
+              </p>
+              <p className="mt-4 text-[15px] font-bold text-[#cfa93c]">
+                The &quot;NoObjectionCertificate.com&quot; Advantage
+              </p>
+              <p className="mt-2 text-[13px] leading-relaxed text-black md:text-sm">
+                These deeds are often buried in manual registers from the
+                post-partition era. While standard lawyers tell you &quot;the
+                file is untraceable,&quot; we use our 3rd-generation
+                understanding of the L&DO Record Room to locate the specific
+                volume and folio number. We don&apos;t just get you a copy; we
+                ensure the government record matches your physical possession,
+                preventing &quot;Title Discrepancies&quot; that kill
+                high-value bank loans.
+              </p>
             </div>
           </div>
         </div>
@@ -1372,20 +1398,41 @@ export default function Home() {
                 What it is:
               </p>
               <p className="mt-2 text-[13px] leading-relaxed text-black md:text-sm">
-                Permission to build vertically.
+                A mandatory clearance certifying that the top elevation of a
+                proposed building (including antennas, lift rooms, and water
+                tanks) does not penetrate the transitional or inner horizontal
+                surfaces of the airport&apos;s flight path.
               </p>
               <p className="mt-4 text-[15px] font-bold text-[#cfa93c]">
                 Who needs it:
               </p>
               <p className="mt-2 text-[13px] leading-relaxed text-black md:text-sm">
-                Projects near IGI/Safdarjung.
+                Developers and property owners in South Delhi (especially near
+                IGI or Safdarjung Airport zones) planning vertical construction
+                that exceeds the height limits specified in the Color Coded
+                Zoning Map (CCZM).
+              </p>
+              <p className="mt-4 text-[15px] font-bold text-[#cfa93c]">
+                Procedure:
+              </p>
+              <p className="mt-2 text-[13px] leading-relaxed text-black md:text-sm">
+                Site survey by a qualified agency using WGS-84 coordinates →
+                Online application via the NOCAS (SANSAG) portal → Submission
+                of site elevation and AMSL (Above Mean Sea Level) data →
+                Technical vetting by AAI (Airport Authority of India) →
+                Issuance of NOC.
               </p>
               <p className="mt-4 text-[15px] font-bold text-[#cfa93c]">
                 The &quot;NoObjectionCertificate.com&quot; Advantage
               </p>
               <p className="mt-2 text-[13px] leading-relaxed text-black md:text-sm">
-                We use &quot;WGS-84&quot; site coordinates that are
-                pre-verified to ensure height approvals.
+                We use high-precision WGS-84 site coordinates that are
+                pre-verified to ensure height approvals. While others often
+                face rejections due to &quot;Coordinate Mismatch,&quot; our
+                3rd-generation technical liaison ensures your site data is
+                &quot;AAI-Ready.&quot; We specifically help South Delhi
+                developers maximize their permissible height within the strict
+                safety funnel of the IGI and Safdarjung runways.
               </p>
             </div>
           </div>
@@ -1394,26 +1441,45 @@ export default function Home() {
           <div className="mt-14 grid items-center gap-8 md:grid-cols-2 md:gap-12">
             <div>
               <h3 className="text-xl font-extrabold text-black md:text-2xl">
-                DUAC (Urban Art Commission) NOC
+                DUAC (Delhi Urban Art Commission) NOC
               </h3>
               <p className="mt-4 text-[15px] font-bold text-[#cfa93c]">
                 What it is:
               </p>
               <p className="mt-2 text-[13px] leading-relaxed text-black md:text-sm">
-                Aesthetic approval.
+                A specialized aesthetic and architectural approval required to
+                ensure that high-profile buildings maintain the visual and
+                environmental character of Delhi.
               </p>
               <p className="mt-4 text-[15px] font-bold text-[#cfa93c]">
                 Who needs it:
               </p>
               <p className="mt-2 text-[13px] leading-relaxed text-black md:text-sm">
-                Large residential/commercial projects.
+                Developers of large-scale residential complexes, commercial
+                malls, institutional buildings, or any significant project
+                located within Delhi&apos;s designated &quot;Urban Art&quot;
+                zones or near heritage precincts.
+              </p>
+              <p className="mt-4 text-[15px] font-bold text-[#cfa93c]">
+                Procedure:
+              </p>
+              <p className="mt-2 text-[13px] leading-relaxed text-black md:text-sm">
+                Submission of detailed architectural drawings, 3D models, and
+                landscape plans to the Commission → Multi-level vetting of
+                design aesthetics and urban impact → Presentation to the DUAC
+                board → Issuance of design clearance.
               </p>
               <p className="mt-4 text-[15px] font-bold text-[#cfa93c]">
                 The &quot;NoObjectionCertificate.com&quot; Advantage
               </p>
               <p className="mt-2 text-[13px] leading-relaxed text-black md:text-sm">
-                We understand the &quot;Design Language&quot; the commission
-                looks for, preventing &quot;Design Rejections.&quot;
+                We understand the specific &quot;Design Language&quot; and
+                aesthetic sensibilities that the Commission prioritizes, which
+                helps in preventing costly &quot;Design Rejections.&quot; Our
+                3rd-generation liaison allows us to navigate the feedback loop
+                efficiently, ensuring your project&apos;s visual identity
+                aligns with regulatory expectations without compromising your
+                architectural vision.
               </p>
             </div>
             <div className="relative aspect-[4/3] w-full overflow-hidden bg-black">
@@ -1455,14 +1521,37 @@ export default function Home() {
                 What it is:
               </p>
               <p className="mt-2 text-[13px] leading-relaxed text-zinc-200 md:text-sm">
-                Clearance for water infrastructure.
+                Formal approval from the Delhi Jal Board for the installation
+                of new water lines or sewer connections, including
+                &quot;Bulk Connection&quot; sanctions for large-scale projects.
+              </p>
+              <p className="mt-4 text-[15px] font-bold text-[#cfa93c]">
+                Who needs it:
+              </p>
+              <p className="mt-2 text-[13px] leading-relaxed text-zinc-200 md:text-sm">
+                Builders of new residential floors, commercial complexes,
+                schools, or hospitals; or owners looking to regularize an
+                unauthorized connection.
+              </p>
+              <p className="mt-4 text-[15px] font-bold text-[#cfa93c]">
+                Procedure:
+              </p>
+              <p className="mt-2 text-[13px] leading-relaxed text-zinc-200 md:text-sm">
+                Submission of site plan and plumbing layout → Inspection by
+                Zonal Engineer → Calculation of &quot;Infrastructure
+                Charges&quot; and &quot;Development Fees&quot; → Issuance of
+                Sanction Letter → Physical connection under DJB supervision.
               </p>
               <p className="mt-4 text-[15px] font-bold text-[#cfa93c]">
                 The &quot;NoObjectionCertificate.com&quot; Advantage
               </p>
               <p className="mt-2 text-[13px] leading-relaxed text-zinc-200 md:text-sm">
-                We settle &quot;Bulk Connection&quot; disputes that standard
-                plumbers/consultants can&apos;t handle.
+                Standard plumbers often lead to &quot;Illegal Connection&quot;
+                penalties that can haunt you for years. We specialize in
+                settling &quot;Bulk Connection&quot; disputes and ensuring your
+                &quot;Infrastructure Charges&quot; are calculated accurately
+                based on the latest DJB notifications, preventing overpayment
+                on large-scale South Delhi developments.
               </p>
             </div>
           </div>

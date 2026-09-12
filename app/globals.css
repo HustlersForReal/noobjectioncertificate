@@ -39,6 +39,21 @@ html {
   scroll-behavior: smooth;
 }
 
+@keyframes navDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-drop {
+  animation: navDrop 0.25s ease-out;
+}
+
 /* Mobile: detail-row image always above text */
 @media (max-width: 767px) {
   .grid > [class*="aspect-"] {
