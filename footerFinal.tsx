@@ -104,7 +104,7 @@ export function FooterFinal({
             <div>
               <h2 className="mb-4 font-extrabold text-4xl tracking-[-0.03em] text-[#111111] sm:text-6xl">Get <span className="text-[#1d9e49]">Private Consultation</span></h2>
               <p className="mx-auto max-w-md font-sans text-sm leading-relaxed text-[#3f3f3f] sm:text-base lg:mx-0">
-                Need discreet, one-on-one guidance on your property matter? Share your details and a senior PuranaGhar consultant will reach out to you directly and confidentially.
+                Need discreet, one-on-one guidance on your property matter? Share your details and a senior NOC consultant will reach out to you directly and confidentially.
 
 
               </p>
