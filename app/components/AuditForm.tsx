@@ -1,12 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getReferredBy, normalizeRefCode } from "@/lib/referral-storage";
 
 export default function AuditForm() {
   const [name, setName] = useState("");
   const [department, setDepartment] = useState("");
   const [pincode, setPincode] = useState("");
+  const [referralCode, setReferralCode] = useState("");
   const [error, setError] = useState("");
+
+  // Prefill referral code from URL (?ref=) or stored attribution
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const fromUrl = params.get("ref");
+      if (fromUrl) {
+        const parsed = normalizeRefCode(fromUrl);
+        if (parsed) {
+          setReferralCode(parsed);
+          return;
+        }
+      }
+    } catch {
+      // ignore, fall back to storage
+    }
+    const stored = getReferredBy();
+    if (stored) setReferralCode(stored);
+  }, []);
 
   function handleContact() {
     if (!name.trim() || !department.trim() || !/^[1-9][0-9]{5}$/.test(pincode.trim())) {
@@ -18,7 +39,8 @@ export default function AuditForm() {
       `Hello NoObjectionCertificate.com, I want to request a Strategic VVIP Audit.\n` +
       `Name: ${name.trim()}\n` +
       `Department: ${department.trim()}\n` +
-      `Pincode: ${pincode.trim()}`;
+      `Pincode: ${pincode.trim()}` +
+      (referralCode.trim() ? `\nReferral Code: ${referralCode.trim().toUpperCase()}` : "");
     window.open(
       `https://wa.me/918800505050?text=${encodeURIComponent(message)}`,
       "_blank"
@@ -63,6 +85,17 @@ export default function AuditForm() {
         onChange={(e) => setPincode(e.target.value.replace(/\D/g, ""))}
         placeholder="6-digit pincode"
         className={`${inputClass} mt-2`}
+      />
+
+      <label className="mt-5 block text-left text-sm font-bold text-[#d6b33c]">
+        Referral Code <span className="font-medium text-zinc-500">(optional)</span>
+      </label>
+      <input
+        type="text"
+        value={referralCode}
+        onChange={(e) => setReferralCode(e.target.value.toUpperCase())}
+        placeholder="e.g. #PB12345A"
+        className={`${inputClass} mt-2 uppercase placeholder:normal-case`}
       />
 
       {error && (

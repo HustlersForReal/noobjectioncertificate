@@ -25,40 +25,7 @@ const brands = [
   { name: "ValuationWala", url: "https://valuationwala.com", icon: <Scale className="w-6 h-6" />, desc: "Property Valuation Experts" },
 ];
 
-// ─── Watermark (inlined from PropertyBaapWatermark) ──────────────
-function PropertyBaapWatermark() {
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 640);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-  const cols = isMobile ? 4 : 12;
-  const count = isMobile ? 80 : 360;
-  return (
-    <div className="absolute inset-0 pointer-events-none select-none overflow-hidden" style={{ opacity: 0.12 }}>
-      {Array.from({ length: count }).map((_, i) => {
-        const row = Math.floor(i / cols);
-        return (
-          <span
-            key={i}
-            className={`absolute font-black whitespace-nowrap ${isMobile ? "text-[13px]" : "text-[18px]"}`}
-            style={{
-              color: "rgba(255,255,255,0.15)",
-              top: `${row * (isMobile ? 5.5 : 5)}%`,
-              left: `${(i % cols) * (isMobile ? 25 : 8.5)}%`,
-            }}
-          >
-            PropertyBaap
-          </span>
-        );
-      })}
-    </div>
-  );
-}
-
-// ─── Main Footer ─────────────────────────────────────────────────
+// ─── Main Footer (single reusable component, no child components) ──
 export function FooterFinal({
   signupUrl = "https://thenewsaledeed.pages.dev/reference-giver?tab=signup",
   loginUrl = "https://thenewsaledeed.pages.dev/reference-giver?tab=login",
@@ -81,6 +48,17 @@ export function FooterFinal({
   const [partnerForm, setPartnerForm] = useState({ name: "", phone: "", type: "", message: "" });
   const [partnerTypeOpen, setPartnerTypeOpen] = useState(false);
   const partnerTypeRef = useRef<HTMLDivElement>(null);
+
+  // Watermark responsiveness (inlined, no child component)
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+  const watermarkCols = isMobile ? 4 : 12;
+  const watermarkCount = isMobile ? 80 : 360;
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
@@ -124,9 +102,11 @@ export function FooterFinal({
         <section id="contact" className="scroll-mt-24 border-b border-primary/10 bg-[#fafafa] py-10 sm:py-16">
           <div className="mx-auto grid max-w-6xl gap-8 px-4 text-center sm:px-6 lg:grid-cols-[0.75fr_1.25fr] lg:items-center lg:gap-16 lg:text-left">
             <div>
-              <h2 className="mb-4 font-extrabold text-4xl tracking-[-0.03em] text-[#111111] sm:text-6xl">Contact Us</h2>
+              <h2 className="mb-4 font-extrabold text-4xl tracking-[-0.03em] text-[#111111] sm:text-6xl">Get <span className="text-[#1d9e49]">Private Consultation</span></h2>
               <p className="mx-auto max-w-md font-sans text-sm leading-relaxed text-[#3f3f3f] sm:text-base lg:mx-0">
-                Have a question about your property matter? Share your details and our team will get back to you confidentially.
+                Need discreet, one-on-one guidance on your property matter? Share your details and a senior PuranaGhar consultant will reach out to you directly and confidentially.
+
+
               </p>
             </div>
             <form onSubmit={handleContactSubmit} className="grid gap-3 rounded-xl border border-[#e2e2e2] bg-[#ffffff] p-4 sm:grid-cols-2 sm:p-6">
@@ -193,7 +173,24 @@ export function FooterFinal({
 
         {/* ── Need More Services (Property Baap) ── */}
         <div id="property-baap" className="relative scroll-mt-6 py-10 sm:py-16 bg-[#fafafa] border-b border-primary/10 overflow-hidden">
-          <PropertyBaapWatermark />
+          <div className="absolute inset-0 pointer-events-none select-none overflow-hidden" style={{ opacity: 0.12 }}>
+            {Array.from({ length: watermarkCount }).map((_, i) => {
+              const row = Math.floor(i / watermarkCols);
+              return (
+                <span
+                  key={i}
+                  className={`absolute font-black whitespace-nowrap ${isMobile ? "text-[13px]" : "text-[18px]"}`}
+                  style={{
+                    color: "rgba(255,255,255,0.15)",
+                    top: `${row * (isMobile ? 5.5 : 5)}%`,
+                    left: `${(i % watermarkCols) * (isMobile ? 25 : 8.5)}%`,
+                  }}
+                >
+                  PropertyBaap
+                </span>
+              );
+            })}
+          </div>
           <div className="max-w-5xl mx-auto px-4 relative z-10">
             <div className="text-center mb-10 sm:mb-14">
               <h2 className="mx-auto mb-5 w-fit rounded-full border border-primary/20 bg-primary px-6 py-2.5 font-extrabold text-2xl sm:text-3xl text-white tracking-[-0.02em] shadow-[0_8px_20px_rgba(207,169,60,0.14)]">Need More Services?</h2>
@@ -268,7 +265,7 @@ export function FooterFinal({
                     <p>
                       With a life exposed to many situations where the only way out was <span className="font-bold text-[#111111]">Do or Die</span>, the only option was survival and sustenance, routed through one belief: <span className="font-bold text-[#cfa93c]">MUST FIGHT. MUST WIN.</span>
                     </p>
-                    <p>What was initially scary gradually became thrilling. That experience became a daily routine and eventually started reflecting everywhere, personally as well as professionally.</p>
+                    <p>What was initially scary gradually became thrilling. That experience became a daily routine - and eventually started reflecting everywhere, personally as well as professionally.</p>
                     <h3 className="pt-4 text-center font-sans text-[17px] font-black uppercase tracking-[0.08em] text-[#111111] sm:text-[19px]">Professional Pinch &amp; Punch</h3>
                     <p>The profession never welcomed me in the way I expected it to. Denials. Disapprovals. Disappointments. They all led to one thing: <span className="font-bold text-[#cfa93c]">DARE.</span></p>
                     <p>The one who wholeheartedly dares literally does not care. That <span className="font-bold text-[#111111]">Dare Without Care</span> created an attitude that became <span className="font-bold text-[#111111]">Rare</span>.</p>
@@ -277,6 +274,7 @@ export function FooterFinal({
                     <h3 className="pt-4 text-center font-sans text-[17px] font-black uppercase tracking-[0.08em] text-[#111111] sm:text-[19px]">Done Hain</h3>
                     <p>When a query comes to us, we are psychologically prepared and trained to believe we will be able to handle, execute &amp; accomplish it and never discard it because it is small, irrelevant or seemingly less profitable.</p>
                     <p className="flex items-center justify-center gap-2 text-center font-bold text-[#cfa93c]">In our Mind It Is Already — Done Hain <CheckCircle2 className="h-5 w-5 text-[#cfa93c]" /></p>
+                    <p>We see it as: An opportunity to learn. An opportunity to solve. An opportunity to start a new journey, with someone we already know or someone we have just met.</p>
                     <p>We don&apos;t claim to do wonders. But we do assure you of <span className="font-bold text-[#cfa93c]">saving you from blunders.</span></p>
                     <h3 className="pt-6 text-center font-serif text-xl font-black text-[#111111] sm:text-2xl">Property Baap — The Meaning</h3>
                     <p>A father is not merely someone who commands the utmost respect. A father inherently carries the utmost responsibility. He provides an answer to your every question, no matter how silly it may seem, and searches for a solution to your every problem. Sometimes he gives you exactly what you want. Sometimes he tells you what is right and practical. A father is, in many ways, our one-stop solution provider in any given situation.</p>
@@ -396,6 +394,10 @@ export function FooterFinal({
                 </p>
                 <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/80 sm:text-base md:mx-0">
                   Whether you are a student, homemaker, business owner, working professional, delivery partner, senior citizen, person with a disability, unemployed, or simply looking for an additional source of passive income - you can become a part of our network.
+                </p>
+                <p className="mx-auto mt-4 max-w-2xl text-base font-black leading-snug text-white sm:text-lg md:mx-0">
+                  Just Refer Someone About Any Of Our Property Services And You&apos;re{" "}
+                  Good To Go.
                 </p>
                 <div className="mt-5 flex flex-wrap justify-center gap-2 text-xs font-bold uppercase tracking-[0.1em] text-white sm:mt-6 sm:text-xs sm:tracking-[0.14em] md:justify-start">
                   {["Zero Liability", "Zero Joining Fee", "Zero Conditions"].map((benefit) => (

@@ -54,6 +54,16 @@ html {
   animation: navDrop 0.25s ease-out;
 }
 
+/* Referral welcome popup entry animation */
+@keyframes ref-pop-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.ref-pop-in {
+  animation: ref-pop-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 /* Mobile: detail-row image always above text */
 @media (max-width: 767px) {
   .grid > [class*="aspect-"] {
