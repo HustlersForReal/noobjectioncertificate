@@ -433,7 +433,7 @@ export function FooterFinal({
           <div className="max-w-5xl mx-auto relative z-10">
             <div className="flex flex-col items-center text-center mb-10 sm:mb-12">
               <div className="font-sans text-[19px] sm:text-[38px] font-extrabold leading-none mb-5">
-                <span className="text-[#cfa93c]">No Objection Certificate</span>
+                <span className="text-[#cfa93c]">NoObjectionCertificate.com</span>
               </div>
               <div className="mt-1.5 flex items-center justify-center gap-2 flex-wrap font-sans text-[12px] sm:text-[14px] leading-relaxed">
                 <span className="text-muted">A Unit of</span>
