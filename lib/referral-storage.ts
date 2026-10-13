@@ -16,7 +16,6 @@ const IDB_STORE = 'ref';
 const IDB_KEY = 'current';
 const CACHE_NAME = 'pb-ref-cache-v1';
 const CACHE_PATH = '/__pb_ref__';
-const SERVER_COOKIE_CHECK = '/api/referral';
 
 export type RefRecord = { code: string; ts: number };
 
@@ -181,39 +180,18 @@ async function deleteCacheStorage(): Promise<void> {
 
 /* ---------------- Server cookie anchor ---------------- */
 async function readServerCookie(): Promise<string | null> {
-  if (typeof window === 'undefined') return null;
-  try {
-    const res = await fetch(SERVER_COOKIE_CHECK, {
-      credentials: 'same-origin',
-      cache: 'no-store',
-    });
-    if (!res.ok) return null;
-    const data = (await res.json()) as { code?: unknown };
-    if (typeof data.code !== 'string') return null;
-    return normalizeRefCode(data.code);
-  } catch {
-    return null;
-  }
+  // Static export has no server route; server-anchor layer is unavailable here.
+  return null;
 }
 
-async function writeServerCookie(code: string): Promise<void> {
-  if (typeof window === 'undefined') return;
-  try {
-    await fetch(`${SERVER_COOKIE_CHECK}?code=${encodeURIComponent(code)}`, {
-      credentials: 'same-origin',
-    });
-  } catch {
-    /* ignore */
-  }
+async function writeServerCookie(): Promise<void> {
+  // Static export has no server route; server-anchor layer is unavailable here.
+  return;
 }
 
 async function deleteServerCookie(): Promise<void> {
-  if (typeof window === 'undefined') return;
-  try {
-    await fetch(SERVER_COOKIE_CHECK, { method: 'DELETE', credentials: 'same-origin' });
-  } catch {
-    /* ignore */
-  }
+  // Static export has no server route; server-anchor layer is unavailable here.
+  return;
 }
 
 /* ---------------- Public API ---------------- */
@@ -224,7 +202,7 @@ export function setReferredBy(code: string) {
   writeSyncStorage(record);
   void writeIndexedDb(record);
   void writeCacheStorage(record);
-  void writeServerCookie(parsed);
+  void writeServerCookie();
   try { window.dispatchEvent(new CustomEvent('pb-ref-updated')); } catch { /* ignore */ }
 }
 
@@ -280,7 +258,7 @@ export async function hydrateReferredBy(): Promise<string | null> {
   writeSyncStorage(refreshed);
   void writeIndexedDb(refreshed);
   void writeCacheStorage(refreshed);
-  void writeServerCookie(refreshed.code);
+  void writeServerCookie();
   try { window.dispatchEvent(new CustomEvent('pb-ref-updated')); } catch { /* ignore */ }
   return refreshed.code;
 }
