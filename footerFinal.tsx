@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { ExternalLink, X, CheckCircle2, Search, FileText, FilePen, Shield, Scale, PhoneCall, ChevronDown, ArrowRight } from "lucide-react";
+import { ExternalLink, X, CheckCircle2, Search, FileText, FilePen, Shield, Scale, PhoneCall, ChevronDown } from "lucide-react";
 
 // ─── Data ──────────────────────────────────────────────────────────
 const partnerTypes = [
@@ -82,7 +82,7 @@ export function FooterFinal({
     else if (contactForm.message.trim().length < 10) errors.message = "Please provide at least 10 characters";
     setContactErrors(errors);
     if (Object.keys(errors).length > 0) return;
-    const message = `Hello No Objection Certificate, I want to get in touch.\n\nName: ${contactForm.name}\nPhone: ${contactForm.phone}\nMessage: ${contactForm.message}`;
+    const message = `Hello NoObjectionCertificate.com, I want to get in touch.\n\nName: ${contactForm.name}\nPhone: ${contactForm.phone}\nMessage: ${contactForm.message}`;
     window.open(`https://wa.me/918800505050?text=${encodeURIComponent(message)}`, "_blank");
   };
 
@@ -90,7 +90,7 @@ export function FooterFinal({
     event.preventDefault();
     const cleanedPhone = partnerForm.phone.replace(/[\s\-()]/g, "");
     if (!partnerForm.type || !/^(\+91|91|0)?[6-9]\d{9}$/.test(cleanedPhone)) return;
-    const whatsappMessage = `Hello No Objection Certificate, I want to register as a partner.\n\nName: ${partnerForm.name}\nPhone: ${partnerForm.phone}\nPartner Type: ${partnerForm.type}\nDetails: ${partnerForm.message}`;
+    const whatsappMessage = `Hello NoObjectionCertificate.com, I want to register as a partner.\n\nName: ${partnerForm.name}\nPhone: ${partnerForm.phone}\nPartner Type: ${partnerForm.type}\nDetails: ${partnerForm.message}`;
     window.open(`https://wa.me/918800505050?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
     setShowPartnerModal(false);
   };
@@ -163,7 +163,7 @@ export function FooterFinal({
               We boldly present our one call challenge to prove that we are the best people to deal with when it comes to one of your most valuable possessions - <span className="text-primary font-bold">Your Property</span>
             </p>
             <a
-              href={`https://wa.me/918800505050?text=${encodeURIComponent("*Hello No Objection Certificate, I Accept Your 1 Call Challenge.*")}`}
+              href={`https://wa.me/918800505050?text=${encodeURIComponent("*Hello NoObjectionCertificate.com, I Accept Your 1 Call Challenge.*")}`}
               className="font-sans px-6 sm:px-10 py-3 sm:py-5 bg-primary hover:bg-primary text-white font-bold rounded-lg transition-all text-base sm:text-lg inline-flex items-center justify-center gap-3 shadow-lg shadow-primary/20"
             >
               Accept The Challenge
@@ -451,23 +451,25 @@ export function FooterFinal({
             </div>
             <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent mb-8" />
             <nav aria-label="Footer Navigation" className="flex flex-wrap justify-center gap-x-7 sm:gap-x-10 gap-y-3 mb-8">
-              <a href="#dispute-form" className="font-sans text-muted hover:text-primary text-xs sm:text-sm font-medium transition-colors">Resolve Dispute</a>
-              <a href="#cashout-form" className="font-sans text-muted hover:text-primary text-xs sm:text-sm font-medium transition-colors">Property Liquidation</a>
-              <a href="#faq" className="font-sans text-muted hover:text-primary text-xs sm:text-sm font-medium transition-colors">FAQs</a>
-              <a href="https://propertybaap.com" target="_blank" rel="noopener noreferrer" className="font-sans text-muted hover:text-primary text-xs sm:text-sm font-medium transition-colors">PropertyBaap</a>
+              <a href="#services" className="font-sans text-muted hover:text-primary text-xs sm:text-sm font-medium transition-colors">Our Services</a>
+              <a href="#property-baap" className="font-sans text-muted hover:text-primary text-xs sm:text-sm font-medium transition-colors">Property Baap</a>
+              <a href="#brand-story" className="font-sans text-muted hover:text-primary text-xs sm:text-sm font-medium transition-colors">Brand Story</a>
+              <a href="#contact" className="font-sans text-muted hover:text-primary text-xs sm:text-sm font-medium transition-colors">Contact Us</a>
             </nav>
           </div>
         </div>
 
         {/* ── Bottom Bar ── */}
-        <div className="bg-[#000000] w-full py-5 px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/10">
-          <p className="font-sans text-white text-[10px] sm:text-xs tracking-wide order-2 sm:order-1">&copy; 2026 No Objection Certificate &middot; All Rights Reserved</p>
-          <p className="font-sans font-medium text-xs sm:text-sm order-1 sm:order-2 text-white">
-            <span className="mr-2 text-white">Incredible</span>
-            <span style={{ color: "#FF9933" }}>In</span>
-            <span className="text-white">d</span>
-            <span style={{ color: "#138808" }}>ia</span>
-          </p>
+        <div className="bg-[#000000] w-full py-5 px-4 sm:px-6 border-t border-white/10">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+            <p className="font-sans text-white text-[10px] sm:text-xs tracking-wide order-2 sm:order-1">&copy; 2026 NoObjectionCertificate.com &middot; All Rights Reserved</p>
+            <p className="font-sans font-medium text-xs sm:text-sm order-1 sm:order-2 text-white">
+              <span className="mr-2 text-white">Incredible</span>
+              <span style={{ color: "#FF9933" }}>In</span>
+              <span className="text-white">d</span>
+              <span style={{ color: "#138808" }}>ia</span>
+            </p>
+          </div>
         </div>
       </footer>
 
@@ -483,7 +485,7 @@ export function FooterFinal({
               <ExternalLink className="w-7 h-7 text-primary" />
             </div>
             <h3 className="font-extrabold text-xl text-[#111111] mb-2 tracking-[-0.02em]">
-              You are about to leave <span className="text-primary">No Objection Certificate</span>
+              You are about to leave <span className="text-primary">NoObjectionCertificate.com</span>
             </h3>
             <p className="text-muted text-sm mb-6">You will be visiting {selectedBrand.name}.</p>
             <div className="flex gap-3">

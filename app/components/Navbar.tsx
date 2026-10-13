@@ -35,8 +35,6 @@ const groups = [
   },
 ];
 
-const links = groups.flatMap((g) => g.items);
-
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 

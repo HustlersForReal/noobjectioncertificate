@@ -10,8 +10,8 @@ service cloud.firestore {
     // Writer (your registration flow) must create:
     //   referral_codes/{CODE}  →  { phone: "9876543210", name: "Referrer Name" }
     match /referral_codes/{code} {
-      allow get: if code.matches('#PB[0-9]{5}[A-Z]');
-      allow create, update: if code.matches('#PB[0-9]{5}[A-Z]')
+      allow get: if code.matches('#(BAAP[0-9]{5}|PB[0-9]{5})[A-Z]');
+      allow create, update: if code.matches('#(BAAP[0-9]{5}|PB[0-9]{5})[A-Z]')
         && request.resource.data.keys().hasOnly(['phone', 'name'])
         && request.resource.data.phone is string
         && request.resource.data.phone.matches('[0-9]{10}')
@@ -38,7 +38,7 @@ service cloud.firestore {
         && request.resource.data.who.size() > 0
         && request.resource.data.who.size() <= 50
         && request.resource.data.referralCode is string
-        && request.resource.data.referralCode.matches('#PB[0-9]{5}[A-Z]');
+        && request.resource.data.referralCode.matches('#(BAAP[0-9]{5}|PB[0-9]{5})[A-Z]');
     }
 
     match /referrals/{phone} {
