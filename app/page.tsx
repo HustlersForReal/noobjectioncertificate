@@ -3,6 +3,7 @@ import AuditForm from "./components/AuditForm";
 import Navbar from "./components/Navbar";
 import FooterFinal from "../footerFinal";
 import FloatingActions from "./components/FloatingActions";
+import ReferEarn from "./components/ReferEarn";
 
 const gold = "#d6b33c";
 
@@ -151,6 +152,7 @@ export default function Home() {
             >
               Get NOC
             </a>
+            <ReferEarn />
           </div>
       </section>
 
