@@ -9,6 +9,14 @@ import "./globals.css";
 
 const siteUrl = "https://noobjectioncertificate.com";
 
+const ogImage = {
+  url: `${siteUrl}/og-image.png`,
+  width: 1200,
+  height: 630,
+  alt: "NoObjectionCertificate.com — L&DO, DDA and MCD approvals in Delhi",
+  type: "image/png",
+};
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -56,21 +64,14 @@ export const metadata: Metadata = {
     title: "NOC Services Delhi | L&DO, DDA Approvals — NOC Banwao",
     description:
       "NOC Banwao, Deal Aage Badhao — L&DO, DDA, MCD NOCs, freehold conversion, mutation & Delhi government approvals. 3rd-generation liaison experts.",
-    images: [
-      {
-        url: "/noc.png",
-        width: 1200,
-        height: 630,
-        alt: "NoObjectionCertificate.com NOC services",
-      },
-    ],
+    images: [ogImage],
   },
   twitter: {
     card: "summary_large_image",
     title: "NOC Services Delhi | L&DO, DDA Approvals — NOC Banwao",
     description:
       "L&DO, DDA, MCD NOCs, freehold conversion, mutation & Delhi government approvals. 3rd-generation liaison experts.",
-    images: ["/noc.png"],
+    images: [`${siteUrl}/og-image.png`],
   },
   robots: {
     index: true,
