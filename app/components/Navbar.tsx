@@ -63,7 +63,7 @@ export default function Navbar() {
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((o) => !o)}
-            className="flex h-10 w-10 items-center justify-center rounded-md bg-black text-[#e0b93c] lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-md bg-black text-[#e0b93c]"
           >
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -77,9 +77,9 @@ export default function Navbar() {
         <>
           <div
             onClick={() => setOpen(false)}
-            className="fixed inset-0 z-40 bg-black/30 lg:hidden"
+            className="fixed inset-0 z-40 bg-black/30"
           />
-          <nav className="nav-drop absolute left-0 right-0 top-full z-50 border-b border-black/10 bg-[#fafafa] shadow-xl lg:hidden">
+          <nav className="nav-drop absolute left-0 right-0 top-full z-50 border-b border-black/10 bg-[#fafafa] shadow-xl">
             <ul className="max-h-[65vh] overflow-y-auto px-4 py-3">
               {groups.map((g) => (
                 <li key={g.title} className="mb-3">
