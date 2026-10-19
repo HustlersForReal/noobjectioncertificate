@@ -70,7 +70,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Desktop nav - horizontal bar, hover dropdowns */}
+      {/* Desktop nav - horizontal bar, hover dropdowns (no icons) */}
       <nav className="hidden lg:block border-t border-black/10 bg-[#fafafa]/90 backdrop-blur-sm">
         <div className="mx-auto flex max-w-6xl items-center gap-1 px-4 py-2 sm:px-6">
           {groups.map((g) => (
@@ -102,7 +102,6 @@ export default function Navbar() {
           </a>
         </div>
       </nav>
-
 
       {/* Simple mobile dropdown — full width, light, animated */}
       {open && (
