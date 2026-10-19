@@ -59,7 +59,7 @@ export default function Navbar() {
         </a>
 
         <div className="flex items-center gap-2">
-          {/* Desktop links — inside the existing top bar, no separate navbar */}
+          {/* Desktop links - inside the existing top bar, no separate navbar */}
           <nav className="hidden lg:flex items-center gap-1">
             {groups.map((g) => (
               <div key={g.title} className="group relative">
