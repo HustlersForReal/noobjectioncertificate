@@ -59,6 +59,36 @@ export default function Navbar() {
         </a>
 
         <div className="flex items-center gap-2">
+          {/* Desktop links — inside the existing top bar, no separate navbar */}
+          <nav className="hidden lg:flex items-center gap-1">
+            {groups.map((g) => (
+              <div key={g.title} className="group relative">
+                <button
+                  type="button"
+                  className="rounded-md px-3 py-2 text-[12px] font-bold uppercase tracking-[0.15em] text-black transition hover:text-[#a8822a]"
+                >
+                  {g.title}
+                </button>
+                <div className="invisible absolute left-0 top-full z-50 min-w-[220px] rounded-xl border border-black/10 bg-[#fafafa] p-1.5 opacity-0 shadow-xl transition-all duration-150 group-hover:visible group-hover:opacity-100">
+                  {g.items.map((l) => (
+                    <a
+                      key={l.href}
+                      href={l.href}
+                      className="block rounded-lg px-3 py-2 text-sm font-semibold text-black transition hover:bg-[#f0e9e2] hover:text-[#a8822a]"
+                    >
+                      {l.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <a
+              href="#audit"
+              className="ml-2 rounded-md bg-[#d6b33c] px-4 py-2 text-[12px] font-black uppercase tracking-[0.15em] text-white transition hover:bg-[#cfa93c]"
+            >
+              Start Audit
+            </a>
+          </nav>
           <button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -69,39 +99,6 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-
-      {/* Desktop nav - horizontal bar, hover dropdowns (no icons) */}
-      <nav className="hidden lg:block border-t border-black/10 bg-[#fafafa]/90 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-6xl items-center gap-1 px-4 py-2 sm:px-6">
-          {groups.map((g) => (
-            <div key={g.title} className="group relative">
-              <button
-                type="button"
-                className="rounded-md px-3 py-2 text-[12px] font-bold uppercase tracking-[0.15em] text-black transition hover:text-[#a8822a]"
-              >
-                {g.title}
-              </button>
-              <div className="invisible absolute left-0 top-full z-50 min-w-[220px] rounded-xl border border-black/10 bg-[#fafafa] p-1.5 opacity-0 shadow-xl transition-all duration-150 group-hover:visible group-hover:opacity-100">
-                {g.items.map((l) => (
-                  <a
-                    key={l.href}
-                    href={l.href}
-                    className="block rounded-lg px-3 py-2 text-sm font-semibold text-black transition hover:bg-[#f0e9e2] hover:text-[#a8822a]"
-                  >
-                    {l.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-          ))}
-          <a
-            href="#audit"
-            className="ml-auto rounded-md bg-[#d6b33c] px-4 py-2 text-[12px] font-black uppercase tracking-[0.15em] text-white transition hover:bg-[#cfa93c]"
-          >
-            Start Audit
-          </a>
-        </div>
-      </nav>
 
       {/* Simple mobile dropdown â€” full width, light, animated */}
       {open && (
