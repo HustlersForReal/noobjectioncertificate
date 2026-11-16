@@ -27,8 +27,8 @@ const brands = [
 
 // ─── Main Footer (single reusable component, no child components) ──
 export function FooterFinal({
-  signupUrl = "https://thenewsaledeed.pages.dev/reference-giver?tab=signup",
-  loginUrl = "https://thenewsaledeed.pages.dev/reference-giver?tab=login",
+  signupUrl = "https://propertybaap.com/reference-giver?tab=signup",
+  loginUrl = "https://propertybaap.com/reference-giver?tab=login",
 }: {
   signupUrl?: string;
   loginUrl?: string;
@@ -99,17 +99,9 @@ export function FooterFinal({
     <>
       <footer className="bg-page-bg text-off-white border-t-[6px] border-primary notranslate" translate="no">
         {/* ── Contact Us ── */}
-        <section id="contact" className="scroll-mt-24 border-b border-primary/10 bg-[#fafafa] py-10 sm:py-16">
-          <div className="mx-auto grid max-w-6xl gap-8 px-4 text-center sm:px-6 lg:grid-cols-[0.75fr_1.25fr] lg:items-center lg:gap-16 lg:text-left">
-            <div>
-              <h2 className="mb-4 font-extrabold text-4xl tracking-[-0.03em] text-[#111111] sm:text-6xl">Get <span className="text-[#1d9e49]">Private Consultation</span></h2>
-              <p className="mx-auto max-w-md font-sans text-sm leading-relaxed text-[#3f3f3f] sm:text-base lg:mx-0">
-                Need discreet, one-on-one guidance on your property matter? Share your details and a senior NOC consultant will reach out to you directly and confidentially.
-
-
-              </p>
-            </div>
-            <form onSubmit={handleContactSubmit} className="grid gap-3 rounded-xl border border-[#e2e2e2] bg-[#ffffff] p-4 sm:grid-cols-2 sm:p-6">
+        <section id="contact" className="scroll-mt-24 border-b border-primary/10 bg-[#fafafa] py-14 sm:py-20">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6">
+            <form onSubmit={handleContactSubmit} className="grid gap-4 rounded-2xl border border-[#e2e2e2] bg-[#ffffff] p-5 shadow-lg sm:p-8">
               <input
                 required
                 type="text"
